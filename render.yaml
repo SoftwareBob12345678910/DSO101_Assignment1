@@ -9,8 +9,6 @@ services:
     env: docker
     plan: free
     dockerfilePath: ./backend/Dockerfile
-    buildCommand: npm install
-    startCommand: node server.js
     envVars:
       # Database configuration - Render PostgreSQL
       - key: DB_HOST
