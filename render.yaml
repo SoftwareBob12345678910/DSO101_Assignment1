@@ -12,15 +12,15 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
-      # Database configuration - Set these in Render Dashboard
+      # Database configuration - Render PostgreSQL
       - key: DB_HOST
-        sync: false        # Configure in Render dashboard
+        value: dpg-d6tr7nvgi27c73dsbnig-a
       - key: DB_USER
-        sync: false        # Configure in Render dashboard
+        value: to_do_database_k8c2_user
       - key: DB_PASSWORD
-        sync: false        # Configure in Render dashboard
+        value: DkRhrfeRnyYoyDGTxSQi2l0jwk4LyEmn
       - key: DB_NAME
-        sync: false        # Configure in Render dashboard
+        value: to_do_database_k8c2
       - key: DB_PORT
         value: "5432"
       - key: DB_SSL
