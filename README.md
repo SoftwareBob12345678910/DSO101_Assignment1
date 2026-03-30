@@ -1,18 +1,18 @@
 # DSO101 Assignment 1 - Todo App CI/CD
-**Student Name:** [Your Name]  
-**Student Number:** [Your Student Number]  
-**Submission Folder:** `studentname_studentnumber_DSO101_A1`
+**Student Name:** [Karma Namgay Dorji]  
+**Student Number:** [02230284]  
+**Submission Folder:** `Karma Namgay Dorji_02230284_DSO101_A1`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 /todo-app
   /frontend
     Dockerfile
     nginx.conf
-    .env.example
+    .env
     .env.production
     /src
       App.js
@@ -23,7 +23,7 @@
   /backend
     Dockerfile
     server.js
-    .env.example
+    .env
     package.json
   render.yaml
   docker-compose.yml
@@ -33,17 +33,17 @@
 
 ---
 
-## ⚙️ Step 0: Prerequisites & Local Setup
+## Step 0: Prerequisites & Local Setup
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/SoftwareBob12345678910/DSO101_Assignment1
 cd todo-app
 ```
 
 ### 2. Set up Backend .env
 ```bash
-cp backend/.env.example backend/.env
+cp backend/.env backend/.env
 ```
 Edit `backend/.env`:
 ```
@@ -58,7 +58,7 @@ PORT=5000
 
 ### 3. Set up Frontend .env
 ```bash
-cp frontend/.env.example frontend/.env
+cp frontend/.env frontend/.env
 ```
 Edit `frontend/.env`:
 ```
@@ -72,11 +72,9 @@ docker-compose up --build
 - Frontend: http://localhost:3000
 - Backend: http://localhost:5000
 
-> 📸 **Screenshot**: Add screenshot of the running app here
-
 ---
 
-## 🐳 Part A: Build & Push Docker Images to Docker Hub
+## Part A: Build & Push Docker Images to Docker Hub
 
 ### Step 1: Login to Docker Hub
 ```bash
@@ -87,24 +85,22 @@ docker login
 Replace `yourdockerhub` with your Docker Hub username, and `02190108` with YOUR student ID as the tag:
 ```bash
 # Build backend image
-docker build -t yourdockerhub/be-todo:02190108 ./backend
+docker build -t softwarebob12345678910/be-todo:02230284 ./backend
 
 # Push to Docker Hub
-docker push yourdockerhub/be-todo:02190108
+docker push softwarebob12345678910/be-todo:02230284
 ```
-
-> 📸 **Screenshot**: Add screenshot of Docker Hub showing the pushed be-todo image
+![alt text](image-4.png)
 
 ### Step 3: Build and Push Frontend Image
 ```bash
 # Build frontend image
-docker build -t yourdockerhub/fe-todo:02190108 ./frontend
+docker build -t softwarebob12345678910/fe-todo:02230284 ./frontend
 
 # Push to Docker Hub
-docker push yourdockerhub/fe-todo:02190108
+docker push softwarebob12345678910/fe-todo:02230284
 ```
-
-> 📸 **Screenshot**: Add screenshot of Docker Hub showing the pushed fe-todo image
+![alt text](image-5.png)
 
 ### Step 4: Deploy on Render.com
 
@@ -113,12 +109,13 @@ docker push yourdockerhub/fe-todo:02190108
 2. Name it `todo-db`, click **Create Database**
 3. Copy the connection details (Host, User, Password, Database name)
 
-> 📸 **Screenshot**: Add screenshot of Render PostgreSQL dashboard
+![alt text](image-6.png)
+![alt text](image-7.png)
 
 #### B. Deploy Backend Service
 1. Go to **New → Web Service**
 2. Choose **"Existing image from Docker Hub"**
-3. Image: `yourdockerhub/be-todo:02190108`
+3. Image: `softwarebob12345678910/be-todo:02230284`
 4. Add these Environment Variables:
    ```
    DB_HOST=<your-render-db-host>
@@ -131,25 +128,25 @@ docker push yourdockerhub/fe-todo:02190108
    ```
 5. Click **Deploy**
 
-> 📸 **Screenshot**: Add screenshot of backend Render service running
+![alt text](image-2.png)
+
 
 #### C. Deploy Frontend Service
 1. Go to **New → Web Service**
 2. Choose **"Existing image from Docker Hub"**
-3. Image: `yourdockerhub/fe-todo:02190108`
+3. Image: `softwarebob12345678910/fe-todo:02230284`
 4. Add Environment Variable:
    ```
-   REACT_APP_API_URL=https://be-todo.onrender.com
+   REACT_APP_API_URL=https://fe-todo-02230284.onrender.com/
    ```
 5. Click **Deploy**
+![alt text](image.png)
 
-> 📸 **Screenshot**: Add screenshot of frontend Render service running
-
-> 📸 **Screenshot**: Add screenshot of the live app working end-to-end
+![alt text](image-1.png)
 
 ---
 
-## 🔄 Part B: Automated Build & Deployment from GitHub
+## Part B: Automated Build & Deployment from GitHub
 
 In this part, Render builds a fresh Docker image every time you push a new commit to GitHub.
 
@@ -158,7 +155,7 @@ In this part, Render builds a fresh Docker image every time you push a new commi
 git init
 git add .
 git commit -m "Initial commit - Todo App"
-git remote add origin https://github.com/yourusername/your-repo.git
+git remote add origin https://github.com/SoftwareBob12345678910/DSO101_Assignment1  
 git push -u origin main
 ```
 
@@ -173,7 +170,7 @@ git push -u origin main
 In `render.yaml`, update the backend URL after your first deploy:
 ```yaml
 - key: REACT_APP_API_URL
-  value: https://your-actual-backend.onrender.com
+  value: https://be-todo-02230284.onrender.com
 ```
 
 ### Step 4: Test Auto-deploy
@@ -184,22 +181,19 @@ git commit -m "Test auto-deploy"
 git push
 ```
 Watch Render automatically trigger a new build!
-
-> 📸 **Screenshot**: Add screenshot of Render showing auto-deploy triggered by git push
-
-> 📸 **Screenshot**: Add screenshot of build logs
+![alt text](image-3.png)
 
 ---
 
-## 🌐 Live URLs
+## Live URLs
 
 | Service | URL |
 |---------|-----|
-| Frontend | https://fe-todo.onrender.com |
-| Backend | https://be-todo.onrender.com |
-| GitHub Repo | https://github.com/yourusername/your-repo |
-| Docker Hub (BE) | https://hub.docker.com/r/yourdockerhub/be-todo |
-| Docker Hub (FE) | https://hub.docker.com/r/yourdockerhub/fe-todo |
+| Frontend | https://fe-todo-02230284.onrender.com |
+| Backend | https://be-todo-02230284.onrender.com |
+| GitHub Repo | https://github.com/SoftwareBob12345678910/DSO101_Assignment1|
+| Docker Hub (BE) | https://hub.docker.com/repository/docker/softwarebob12345678910/be-todo/general |
+| Docker Hub (FE) | https://hub.docker.com/repository/docker/softwarebob12345678910/fe-todo/general |
 
 ---
 
