@@ -1,7 +1,6 @@
 # DSO101 Assignment 1 - Todo App CI/CD
 **Student Name:** [Karma Namgay Dorji]  
 **Student Number:** [02230284]  
-**Submission Folder:** `Karma Namgay Dorji_02230284_DSO101_A1`
 
 ---
 
